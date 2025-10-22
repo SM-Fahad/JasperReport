@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
+              http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="employee_list" pageWidth="595" pageHeight="842"
+              columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20"
+              uuid="b52f28c9-bf1a-4c43-bf6a-7081b6dce0b7">
+
+    <!-- Parameters -->
+    <parameter name="createdBy" class="java.lang.String"/>
+
+    <!-- Fields -->
+    <field name="id" class="java.lang.Long"/>
+    <field name="name" class="java.lang.String"/>
+    <field name="department" class="java.lang.String"/>
+    <field name="email" class="java.lang.String"/>
+    <field name="salary" class="java.lang.Double"/>
+
+    <!-- Styles -->
+    <style name="headerStyle" mode="Opaque" forecolor="#FFFFFF" backcolor="#34495E">
+        <font size="12" isBold="true"/>
+        <box>
+            <pen lineWidth="0.5" lineColor="#2C3E50"/>
+        </box>
+    </style>
+
+    <style name="detailStyleOdd" mode="Opaque" backcolor="#ECF0F1"/>
+    <style name="detailStyleEven" mode="Opaque" backcolor="#FFFFFF"/>
+
+    <!-- Title -->
+    <title>
+        <band height="60">
+            <rectangle>
+                <reportElement x="0" y="0" width="555" height="60" backcolor="#2C3E50"/>
+            </rectangle>
+            <textField>
+                <reportElement x="20" y="15" width="515" height="30" forecolor="#FFFFFF" mode="Opaque"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="18" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Employee Directory Report"]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+
+    <!-- Column Header -->
+    <columnHeader>
+        <band height="25">
+            <staticText style="headerStyle">
+                <reportElement x="0" y="0" width="50" height="25"/>
+                <text><![CDATA[ID]]></text>
+            </staticText>
+            <staticText style="headerStyle">
+                <reportElement x="55" y="0" width="120" height="25"/>
+                <text><![CDATA[Name]]></text>
+            </staticText>
+            <staticText style="headerStyle">
+                <reportElement x="180" y="0" width="130" height="25"/>
+                <text><![CDATA[Department]]></text>
+            </staticText>
+            <staticText style="headerStyle">
+                <reportElement x="315" y="0" width="130" height="25"/>
+                <text><![CDATA[Email]]></text>
+            </staticText>
+            <staticText style="headerStyle">
+                <reportElement x="450" y="0" width="105" height="25"/>
+                <text><![CDATA[Salary]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+
+    <!-- Detail -->
+    <detail>
+        <band height="20">
+            <textField>
+                <reportElement x="0" y="0" width="50" height="20" style="detailStyleOdd">
+                    <printWhenExpression><![CDATA[$V{REPORT_COUNT} % 2 != 0]]></printWhenExpression>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="55" y="0" width="120" height="20" style="detailStyleOdd">
+                    <printWhenExpression><![CDATA[$V{REPORT_COUNT} % 2 != 0]]></printWhenExpression>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="180" y="0" width="130" height="20" style="detailStyleOdd">
+                    <printWhenExpression><![CDATA[$V{REPORT_COUNT} % 2 != 0]]></printWhenExpression>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{department}]]></textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="315" y="0" width="130" height="20" style="detailStyleOdd">
+                    <printWhenExpression><![CDATA[$V{REPORT_COUNT} % 2 != 0]]></printWhenExpression>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+            </textField>
+
+            <textField pattern="#,##0.00">
+                <reportElement x="450" y="0" width="105" height="20" style="detailStyleOdd">
+                    <printWhenExpression><![CDATA[$V{REPORT_COUNT} % 2 != 0]]></printWhenExpression>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{salary}]]></textFieldExpression>
+            </textField>
+
+            <!-- Even row -->
+            <textField>
+                <reportElement x="0" y="0" width="50" height="20" style="detailStyleEven">
+                    <printWhenExpression><![CDATA[$V{REPORT_COUNT} % 2 == 0]]></printWhenExpression>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="55" y="0" width="120" height="20" style="detailStyleEven">
+                    <printWhenExpression><![CDATA[$V{REPORT_COUNT} % 2 == 0]]></printWhenExpression>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="180" y="0" width="130" height="20" style="detailStyleEven">
+                    <printWhenExpression><![CDATA[$V{REPORT_COUNT} % 2 == 0]]></printWhenExpression>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{department}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="315" y="0" width="130" height="20" style="detailStyleEven">
+                    <printWhenExpression><![CDATA[$V{REPORT_COUNT} % 2 == 0]]></printWhenExpression>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0.00">
+                <reportElement x="450" y="0" width="105" height="20" style="detailStyleEven">
+                    <printWhenExpression><![CDATA[$V{REPORT_COUNT} % 2 == 0]]></printWhenExpression>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{salary}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+
+    <!-- Page Footer -->
+    <pageFooter>
+        <band height="20">
+            <textField>
+                <reportElement x="0" y="0" width="555" height="20" forecolor="#7F8C8D"/>
+                <textFieldExpression>
+                    <![CDATA["Report generated by: " + $P{createdBy} + " | Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+            </textField>
+        </band>
+    </pageFooter>
+</jasperReport>
